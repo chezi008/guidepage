@@ -27,15 +27,14 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private GuidePageAdapter mPageAdapter;
     private List<View> mData = new ArrayList<>();
+    private BezierBannerDot indicator;
 
     private void initView() {
         viewPager = findViewById(R.id.viewPager);
         mPageAdapter = new GuidePageAdapter(mData);
         initData();
         viewPager.setAdapter(mPageAdapter);
-
-        BezierBannerDot indicator = findViewById(R.id.bezierBannerDot);
-        indicator.attachToViewpager(viewPager);
+        attachToViewpager(viewPager);
     }
 
     /**
@@ -43,8 +42,17 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
      */
     protected abstract void initData();
 
+    protected void attachToViewpager(ViewPager viewPager){
+        indicator = findViewById(R.id.bezierBannerDot);
+        indicator.attachToViewpager(viewPager);
+    }
+
     protected void addView(int resId) {
         View view = LayoutInflater.from(this).inflate(resId, null);
+        mData.add(view);
+    }
+
+    protected void addView(View view) {
         mData.add(view);
     }
 }
