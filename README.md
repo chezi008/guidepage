@@ -28,3 +28,7 @@ class MainActivity : BaseGuideActivity() {
     }
 }
 ```
+### 更新
+#### 1.0.1
+- 添加方法void addView(View view)
+- 复写void attachToViewpager(ViewPager viewPager)即可自己绑定指示器（circleIndex）
