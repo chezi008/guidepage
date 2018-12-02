@@ -5,7 +5,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import com.dotlibrary.BezierBannerDot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +41,19 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
      */
     protected abstract void initData();
 
+    /**
+     * 设置index的样式
+     * @param indicator
+     */
+    protected abstract void setIndicator(BezierBannerDot indicator);
+
     protected void attachToViewpager(ViewPager viewPager){
         indicator = findViewById(R.id.bezierBannerDot);
         indicator.attachToViewpager(viewPager);
+        setIndicator(indicator);
     }
+
+
 
     protected void addView(int resId) {
         View view = LayoutInflater.from(this).inflate(resId, null);
